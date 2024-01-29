@@ -21,9 +21,9 @@ export class SuburbGateway{
     }
 
     updateSuburb(suburb: createSuburbDto){
-        const createSuburb = new updateSuburbUseCase(this.suburbRepo);
+        const updateSuburb = new updateSuburbUseCase(this.suburbRepo);
 
-        return createSuburb.execute(suburb);
+        return updateSuburb.execute(suburb);
 
     }
     getAllsuburb(){

@@ -52,7 +52,7 @@ export class SuburbRepoImplementation implements suburbRepo {
 
         if (suburbToDelete) {
             await suburbToDelete.destroy();
-            return `Suburb with ID Data${id} deleted successfully.`
+            return `Suburb with ID ${id} Data deleted successfully.`
         }
     }
 }
