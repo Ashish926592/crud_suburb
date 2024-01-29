@@ -2,19 +2,25 @@ import { suburbEntity } from "../../../domain/entities/suburbEntity";
 import { suburbSequelize } from "../sequalize/sequalizeModel";
 
 export class suburbMapper{
-    static toDomain(raw: suburbSequelize[]){
-        const data:suburbEntity[] = [];
-        raw.forEach(element => {
-            const suburbDetais = new suburbEntity(
-                element.dataValues.name,
-                element.dataValues.postcode,
-                element.dataValues.state,
-                element.dataValues.id
-            );
+    static toDomain(raw:suburbSequelize | suburbSequelize[] | null):suburbEntity |suburbEntity[] | undefined{
+        if (!raw) {
+            return undefined; 
+        }
 
-            data.push(suburbDetais);
-        })
-        return data;
+        if (Array.isArray(raw)) {
+            return raw.map(element => this.convertToDomain(element));
+        } else {
+            return this.convertToDomain(raw);
+        }
+    }
+
+    private static convertToDomain(element:suburbSequelize):suburbEntity{
+        return new suburbEntity(
+            element.dataValues.name,
+            element.dataValues.postcode,
+            element.dataValues.state,
+            element.dataValues.id
+        );
     }
   
 }

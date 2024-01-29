@@ -5,12 +5,11 @@ const suburbMappers_1 = require("../mappers/suburbMappers");
 const sequalizeModel_1 = require("../sequalize/sequalizeModel");
 class SuburbRepoImplementation {
     async getSuburbById(id) {
-        const data = await sequalizeModel_1.suburbSequelize.findByPk(id);
+        const data = await sequalizeModel_1.suburbSequelize.findOne({ where: { id } });
         if (!data) {
-            return;
+            return undefined; // Return undefined when no record is found
         }
-        const result = suburbMappers_1.suburbMapper.toDomain([data]);
-        return result[0];
+        return suburbMappers_1.suburbMapper.toDomain(data);
     }
     async createSuburb(suburb) {
         const data = await sequalizeModel_1.suburbSequelize.create({
