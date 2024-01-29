@@ -16,8 +16,8 @@ class SuburbGateway {
         return createSuburb.execute(suburb);
     }
     updateSuburb(suburb) {
-        const createSuburb = new updateSuburb_1.updateSuburbUseCase(this.suburbRepo);
-        return createSuburb.execute(suburb);
+        const updateSuburb = new updateSuburb_1.updateSuburbUseCase(this.suburbRepo);
+        return updateSuburb.execute(suburb);
     }
     getAllsuburb() {
         const getAllsuburb = new getAllSuburb_1.getAllSuburbUseCase(this.suburbRepo);

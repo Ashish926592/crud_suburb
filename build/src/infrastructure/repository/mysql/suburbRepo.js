@@ -41,7 +41,7 @@ class SuburbRepoImplementation {
         const suburbToDelete = await sequalizeModel_1.suburbSequelize.findByPk(id);
         if (suburbToDelete) {
             await suburbToDelete.destroy();
-            return `Suburb with ID Data${id} deleted successfully.`;
+            return `Suburb with ID ${id} Data deleted successfully.`;
         }
     }
 }
